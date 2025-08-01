@@ -554,10 +554,13 @@ async function generateExcelFile(data, carNames) {
 async function sendEmailWithAttachment(filePath, fileName, recipientEmail) {
   const transporter = nodemailer.createTransport({
     service: "gmail",
+    port: 587,
+    secure: false,
     auth: {
       user: process.env.EMAIL_USER,
       pass: process.env.EMAIL_PASS,
     },
+    debug: true,
   });
 
   const mailOptions = {
@@ -648,6 +651,8 @@ async function runScheduledScrape() {
     console.error(`Scraping failed: ${result.message}`);
     const transporter = nodemailer.createTransport({
       service: "gmail",
+      port: 587,
+      secure: false,
       auth: {
         user: process.env.EMAIL_USER,
         pass: process.env.EMAIL_PASS,
@@ -668,13 +673,14 @@ async function runScheduledScrape() {
 
 // Schedule the scrape to run at 8 AM and 4 PM daily (IST)
 process.env.TZ = "Asia/Kolkata"; // Set time zone to IST
-// cron.schedule("0 8 * * *", () => {
-//   console.log("Running scheduled scrape at 8 AM IST");
-//   runScheduledScrape();
-// });
+console.log("scrapper will run on set timing...")
+cron.schedule("0 11 * * *", () => {
+  console.log("Running scheduled scrape at 8 AM IST");
+  runScheduledScrape();
+});
 
-// cron.schedule("0 16 * * *", () => {
-//   console.log("Running scheduled scrape at 4 PM IST");
-//   runScheduledScrape();
-// });
-runScheduledScrape();
+cron.schedule("0 16 * * *", () => {
+  console.log("Running scheduled scrape at 4 PM IST");
+  runScheduledScrape();
+});
+
