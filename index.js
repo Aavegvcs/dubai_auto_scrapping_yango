@@ -388,7 +388,7 @@ async function scrapeCars(
 
   // Use current date and time
   const now = new Date();
-  now.setHours(now.getHours() + 2); // Adds 2 hours
+  now.setHours(now.getHours() + 7); // Adds 2 hours
 
   const pickupDate = now.toISOString().split("T")[0]; // YYYY-MM-DD
   const baseTime = now.toTimeString().split(" ")[0]; // HH:MM:SS
