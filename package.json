@@ -1,0 +1,24 @@
+{
+  "name": "alldubaiautoscarping",
+  "version": "1.0.0",
+  "description": "na",
+  "license": "ISC",
+  "author": "jagdish kuri",
+  "type": "commonjs",
+  "main": "index.js",
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1",
+    "install-browsers": "npx playwright install --with-deps"
+  },
+  "dependencies": {
+    "cors": "^2.8.5",
+    "dotenv": "^17.2.1",
+    "express": "^4.21.2",
+    "fs": "^0.0.1-security",
+    "node-cron": "^4.2.1",
+    "nodemailer": "^7.0.5",
+    "path": "^0.12.7",
+    "playwright": "^1.54.1",
+    "xlsx": "^0.18.5"
+  }
+}
