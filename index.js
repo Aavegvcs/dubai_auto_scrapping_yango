@@ -540,7 +540,7 @@ async function generateExcelFile(data, carNames) {
     fileNameParts.push("all_cars");
   }
   const timestamp = new Date().toISOString().replace(/[:.]/g, "-");
-  const fileName = `car_data_${fileNameParts.join("_")}_${timestamp}.xlsx`;
+  const fileName = `yango_car_data_${timestamp}.xlsx`;
 
   const tempDir = path.join(__dirname, "temp");
   if (!fs.existsSync(tempDir)) fs.mkdirSync(tempDir);
@@ -674,13 +674,13 @@ async function runScheduledScrape() {
 // Schedule the scrape to run at 8 AM and 4 PM daily (IST)
 process.env.TZ = "Asia/Kolkata"; // Set time zone to IST
 console.log("scrapper will run on set timing...")
-cron.schedule("0 11 * * *", () => {
-  console.log("Running scheduled scrape at 8 AM IST");
+cron.schedule("0 10 * * *", () => {
+  console.log("Running scheduled scrape at 10 AM IST");
   runScheduledScrape();
 });
 
-cron.schedule("0 16 * * *", () => {
-  console.log("Running scheduled scrape at 4 PM IST");
+cron.schedule("0 15 * * *", () => {
+  console.log("Running scheduled scrape at 3 PM IST");
   runScheduledScrape();
 });
 
