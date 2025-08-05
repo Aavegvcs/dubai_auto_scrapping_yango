@@ -405,7 +405,7 @@ async function scrapeCars(
         if (dailyCheck) {
           const sinceDateTime = new Date(`${pickupDate}T${baseTime}`).getTime();
           const untilDate = new Date(pickupDate);
-          untilDate.setDate(untilDate.getDate() + 1); // Add 1 day
+          untilDate.setDate(untilDate.getDate() + 4); // Add 1 day
           const untilDateTime = new Date(
             `${untilDate.toISOString().split("T")[0]}T${baseTime}`
           ).getTime();
@@ -683,4 +683,4 @@ cron.schedule("0 15 * * *", () => {
   console.log("Running scheduled scrape at 3 PM IST");
   runScheduledScrape();
 });
-
+// runScheduledScrape();
